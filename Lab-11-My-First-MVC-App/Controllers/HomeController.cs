@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Lab_11_My_First_MVC_App.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,9 +26,11 @@ namespace Lab_11_My_First_MVC_App.Controllers
 
         public IActionResult Results(int firstNumber, int secondNumber)
         {
+
+            
             //do what we want with the numbers
 
-            return View();
+            return View(TimePerson.GetPersons(firstNumber, secondNumber));
         }
     }
 }

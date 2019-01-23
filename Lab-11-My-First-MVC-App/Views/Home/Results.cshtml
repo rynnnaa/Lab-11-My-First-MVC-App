@@ -1,12 +1,20 @@
-﻿<DOCTYPE html>
+﻿@model List<Lab_11_My_First_MVC_App.Models.TimePerson>
+
+
+<DOCTYPE html>
     <html>
     <head>
         <title>Results</title>
         <link href="~/StyleSheet.css" rel="stylesheet" />
     </head>
     <body>
-        <h1>HElloWorld</h1>
-        <p>RESULTS Of NUMEBERS</p>
+        <p>HERE ARE THE RESULTS</p>
+
+        @foreach (var item in Model)
+        {
+            <h3>item.Name</h3>
+            <h4>item.Category</h4>
+        }
 
     </body>
 </html>
