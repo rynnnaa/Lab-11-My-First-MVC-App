@@ -25,6 +25,14 @@ namespace Lab_11_My_First_MVC_App
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseMvc(route =>
+            route.MapRoute(
+                name: "default",
+                template: "{controller=Home/{action=Index}/{id?}"
+                ));
+
+            app.UseStaticFiles();
+;
             app.Run(async (context) =>
             {
                 await context.Response.WriteAsync("Hello World!");
