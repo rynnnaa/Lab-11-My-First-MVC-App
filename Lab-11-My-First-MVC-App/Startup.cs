@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Lab_11_My_First_MVC_App
+namespace Lab_11_My_First_MVC_App  
 {
     public class Startup
     {
