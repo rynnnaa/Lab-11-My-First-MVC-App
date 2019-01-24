@@ -24,12 +24,8 @@ namespace Lab_11_My_First_MVC_App.Models
         {
 
             List<TimePerson> people = new List<TimePerson>();
-            // read in the file
-            //File.ReadALlLines (in an array)
-
-            //iterate through the array and set the values appropriately to a new TimePerson Object.
-
-            //csv is a comma delimated
+ 
+            //csv (is a comma delimated)
 
             //populate whole list with all the people then do the linq query with lambda to filter those people
             TimePerson tp = new TimePerson();
@@ -40,7 +36,28 @@ namespace Lab_11_My_First_MVC_App.Models
 
             //read all lines
             string[] myFile = File.ReadAllLines(newPath);
-            
+
+            //iterate through the array and set the values appropriately to a new TimePerson Object.
+            for (int i = 1; i < myFile.Length; i++)
+            {
+                //split lines
+                string[] fields = myFile[i].Split(',');
+
+                people.Add(new TimePerson
+                {
+
+                    Year = Convert.ToInt32(fields[0]),
+
+                })
+
+            }
+            {
+
+            }
+
+
+
+
             List<TimePerson> listofPeople = people.Where(p => (p.Year >= begYear) && (p.Year <= endYear)).ToList();
 
             return listofPeople;
