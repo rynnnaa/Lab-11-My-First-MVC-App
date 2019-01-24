@@ -12,25 +12,29 @@ namespace Lab_11_My_First_MVC_App.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-           
+
 
             return View();
         }
 
+        /// <summary>
+        /// Making an HTTP Post request for action
+        /// </summary>
+        /// <param name="begYear"></param>
+        /// <param name="endYear"></param>
+        /// <returns></returns>
         [HttpPost]
-
-        public IActionResult Index(int firstNumber, int secondNumber)
+        public IActionResult Index(int begYear, int endYear)
         {
-            return RedirectToAction("Results", new { firstNumber, secondNumber });
+            // redirects to the results action, given parameters
+            return RedirectToAction("Result", new { begYear, endYear });
         }
 
-        public IActionResult Results(int firstNumber, int secondNumber)
+        public ViewResult Result(int begYear, int endYear)
         {
-
-            
-            //do what we want with the numbers
-
-            return View(TimePerson.GetPersons(firstNumber, secondNumber));
+            //Creates a list of TimePerson file that match criteria
+            List<TimePerson> list = TimePerson.GetPersons(begYear, endYear);
+            return View(list);
         }
     }
 }

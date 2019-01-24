@@ -32,7 +32,7 @@ namespace Lab_11_My_First_MVC_App.Models
 
             string path = Environment.CurrentDirectory;
 
-            string newPath = Path.GetFullPath(Path.Combine(Path.Combine(path, @"wwwroot\personOgTheYear.cvs"));
+            string newPath = Path.GetFullPath(Path.Combine(path, @"wwwroot\personOfTheYear.cvs"));
 
             //read all lines
             string[] myFile = File.ReadAllLines(newPath);
@@ -47,18 +47,20 @@ namespace Lab_11_My_First_MVC_App.Models
                 {
 
                     Year = Convert.ToInt32(fields[0]),
-
-                })
-
+                    Honor = fields[1],
+                    Name = fields[2],
+                    Country = fields[3],
+                    BirthYear = (fields[4] == "") ? 0 : Convert.ToInt32(fields[4]),
+                    DeathYear = (fields[5] == "") ? 0 : Convert.ToInt32(fields[5]),
+                    Title = fields[6],
+                    Category = fields[7],
+                    Context = fields[8],
+                });
             }
-            {
-
-            }
 
 
 
-
-            List<TimePerson> listofPeople = people.Where(p => (p.Year >= begYear) && (p.Year <= endYear)).ToList();
+                    List <TimePerson> listofPeople = people.Where(p => (p.Year >= begYear) && (p.Year <= endYear)).ToList();
 
             return listofPeople;
         }
