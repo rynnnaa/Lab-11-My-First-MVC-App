@@ -30,6 +30,7 @@ namespace Lab_11_My_First_MVC_App.Controllers
             return RedirectToAction("Result", new { begYear, endYear });
         }
 
+
         public ViewResult Result(int begYear, int endYear)
         {
             //Creates a list of TimePerson file that match criteria
