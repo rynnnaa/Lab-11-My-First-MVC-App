@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+
 
 namespace Lab_11_My_First_MVC_App.Models
 {
@@ -31,18 +33,14 @@ namespace Lab_11_My_First_MVC_App.Models
 
             //populate whole list with all the people then do the linq query with lambda to filter those people
             TimePerson tp = new TimePerson();
-            tp.Name = "Amanda";
-            tp.Honor = "Being Awesome";
-            tp.Category = "Cats";
-        
 
-            TimePerson tp2 = new TimePerson();
-            tp.Name = "Amanda";
-            tp.Honor = "Being Awesome";
+            string path = Environment.CurrentDirectory;
 
-            people.Add(tp);
-            people.Add(tp2);
+            string newPath = Path.GetFullPath(Path.Combine(Path.Combine(path, @"wwwroot\personOgTheYear.cvs"));
 
+            //read all lines
+            string[] myFile = File.ReadAllLines(newPath);
+            
             List<TimePerson> listofPeople = people.Where(p => (p.Year >= begYear) && (p.Year <= endYear)).ToList();
 
             return listofPeople;
