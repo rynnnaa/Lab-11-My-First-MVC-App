@@ -1,4 +1,16 @@
 ﻿body {
+    background-color: slategray;
+    text-align: center;
+}
 
-    background-color: lightpink;
+div {
+    text-align: center;
+}
+
+h1 {
+    border-color:white;
+    border-width: 10px;
+    border-style: double;
+
+
 }

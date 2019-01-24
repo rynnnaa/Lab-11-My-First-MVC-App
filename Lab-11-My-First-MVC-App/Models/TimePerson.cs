@@ -24,43 +24,32 @@ namespace Lab_11_My_First_MVC_App.Models
         {
 
             List<TimePerson> people = new List<TimePerson>();
- 
+
             //csv (is a comma delimated)
 
-            //populate whole list with all the people then do the linq query with lambda to filter those people
-            TimePerson tp = new TimePerson();
+            string myFile = @"C:\Users\Ryna\codefellows\401class\Lab-11-My-First-MVC-App\Lab-11-My-First-MVC-App\wwwroot\personOfTheYear.csv";
 
-            string path = Environment.CurrentDirectory;
+            var lines = File.ReadAllLines(myFile).Skip(1);
 
-            string newPath = Path.GetFullPath(Path.Combine(path, @"wwwroot\personOfTheYear.cvs"));
-
-            //read all lines
-            string[] myFile = File.ReadAllLines(newPath);
-
-            //iterate through the array and set the values appropriately to a new TimePerson Object.
-            for (int i = 1; i < myFile.Length; i++)
+            foreach (var item in lines)
             {
-                //split lines
-                string[] fields = myFile[i].Split(',');
+                string[] columns = item.Split(',');
+                TimePerson tp = new TimePerson();
+                tp.Year = (columns[0] == "" ? 0 : Convert.ToInt32(columns[0]));
+                tp.Honor = columns[1];
+                tp.Name = columns[2];
+                tp.Country = columns[3];
+                tp.BirthYear = (columns[4] == "" ? 0 : Convert.ToInt32(columns[4]));
+                tp.DeathYear = (columns[5] == "" ? 0 : Convert.ToInt32(columns[5]));
+                tp.Title = columns[6];
+                tp.Category = columns[7];
+                tp.Context = columns[8];
 
-                people.Add(new TimePerson
-                {
+                people.Add(tp);
 
-                    Year = Convert.ToInt32(fields[0]),
-                    Honor = fields[1],
-                    Name = fields[2],
-                    Country = fields[3],
-                    BirthYear = (fields[4] == "") ? 0 : Convert.ToInt32(fields[4]),
-                    DeathYear = (fields[5] == "") ? 0 : Convert.ToInt32(fields[5]),
-                    Title = fields[6],
-                    Category = fields[7],
-                    Context = fields[8],
-                });
             }
 
-
-
-                    List <TimePerson> listofPeople = people.Where(p => (p.Year >= begYear) && (p.Year <= endYear)).ToList();
+            List <TimePerson> listofPeople = people.Where(p => (p.Year >= begYear) && (p.Year <= endYear)).ToList();
 
             return listofPeople;
         }
