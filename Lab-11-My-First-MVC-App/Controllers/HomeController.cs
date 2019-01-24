@@ -37,5 +37,6 @@ namespace Lab_11_My_First_MVC_App.Controllers
             List<TimePerson> list = TimePerson.GetPersons(begYear, endYear);
             return View(list);
         }
+
     }
 }
