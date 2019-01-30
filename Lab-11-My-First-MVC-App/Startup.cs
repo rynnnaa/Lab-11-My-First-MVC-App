@@ -26,9 +26,9 @@ namespace Lab_11_My_First_MVC_App
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc(routes =>
+            app.UseMvc(route =>
             {
-                routes.MapRoute(
+                route.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });

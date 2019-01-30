@@ -27,8 +27,10 @@ namespace Lab_11_My_First_MVC_App.Models
 
             //csv (is a comma delimated)
 
-            string myFile = @"C:\Users\Ryna\codefellows\401class\Lab-11-My-First-MVC-App\Lab-11-My-First-MVC-App\wwwroot\personOfTheYear.csv";
 
+            string myFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../../wwwroot/personOfTheYear.csv");
+
+            //string[] data = File.ReadAllLines(myFile);  
             var lines = File.ReadAllLines(myFile).Skip(1);
 
             foreach (var item in lines)
